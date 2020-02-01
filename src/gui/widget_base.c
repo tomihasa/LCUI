@@ -782,8 +782,6 @@ void Widget_SetContentSize(LCUI_Widget w, float width, float height)
 	}
 	width = width + PaddingX(w) + BorderX(w);
 	height = height + PaddingY(w) + BorderY(w);
-	_DEBUG_MSG("[%lu] %s, size: %g, %g\n", w->index, w->type, width,
-		   height);
 	Widget_SetBorderBoxSize(w, width, height);
 }
 
