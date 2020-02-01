@@ -28,6 +28,6 @@ int main(void)
 	describe("test css parser", test_css_parser);
 	describe("test block layout", test_block_layout);
 	describe("test flex layout", test_flex_layout);
-	PRINT_TEST_RESULT(ret - test_result());
-	return ret;
+	PRINT_TEST_RESULT(ret);
+	return ret - test_result();
 }
