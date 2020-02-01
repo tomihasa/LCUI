@@ -153,7 +153,7 @@ static void FlexBoxLayout_LoadRows(LCUI_FlexBoxLayoutContext ctx)
 	float cross_size;
 	float max_main_size = ctx->widget->box.content.width;
 
-	_DEBUG_MSG("max_main_size: %g\n", max_main_size);
+	DEBUG_MSG("max_main_size: %g\n", max_main_size);
 	for (LinkedList_Each(node, &ctx->widget->children)) {
 		child = node->data;
 		if (child->computed_style.display == SV_NONE) {
@@ -175,7 +175,7 @@ static void FlexBoxLayout_LoadRows(LCUI_FlexBoxLayoutContext ctx)
 		}
 		Widget_ComputeFlexBasisStyle(child);
 		basis = MarginX(child) + child->computed_style.flex.basis;
-		_DEBUG_MSG("[line %lu][%lu] main_size: %g, basis: %g\n",
+		DEBUG_MSG("[line %lu][%lu] main_size: %g, basis: %g\n",
 			   ctx->lines.length, child->index,
 			   ctx->line->main_size, basis);
 		if (flex->wrap == SV_WRAP && ctx->line->elements.length > 0) {
@@ -220,7 +220,7 @@ static void FlexBoxLayout_LoadColumns(LCUI_FlexBoxLayoutContext ctx)
 	if (Widget_HasStaticHeight(ctx->widget)) {
 		max_main_size = ctx->widget->box.content.height;
 	}
-	_DEBUG_MSG("max_main_size: %g\n", max_main_size);
+	DEBUG_MSG("max_main_size: %g\n", max_main_size);
 	for (LinkedList_Each(node, &ctx->widget->children)) {
 		child = node->data;
 
@@ -233,7 +233,7 @@ static void FlexBoxLayout_LoadColumns(LCUI_FlexBoxLayoutContext ctx)
 		}
 		Widget_ComputeFlexBasisStyle(child);
 		basis = MarginY(child) + child->computed_style.flex.basis;
-		_DEBUG_MSG("[column %lu][%lu] main_size: %g, basis: %g\n",
+		DEBUG_MSG("[column %lu][%lu] main_size: %g, basis: %g\n",
 			   ctx->lines.length, child->index,
 			   ctx->line->main_size, basis);
 		if (flex->wrap == SV_WRAP && ctx->line->elements.length > 0 &&
@@ -260,7 +260,7 @@ static void FlexBoxLayout_LoadColumns(LCUI_FlexBoxLayoutContext ctx)
 		ctx->main_size = max(ctx->main_size, ctx->line->main_size);
 	}
 	ctx->cross_size += ctx->line->cross_size;
-	_DEBUG_MSG("main_size: %g\n", ctx->main_size);
+	DEBUG_MSG("main_size: %g\n", ctx->main_size);
 }
 
 static void FlexBoxLayout_Load(LCUI_FlexBoxLayoutContext ctx)
@@ -325,7 +325,7 @@ static void FlexBoxLayout_ReflowRow(LCUI_FlexBoxLayoutContext ctx)
 	}
 
 	/* flex-grow and flex-shrink */
-	_DEBUG_MSG("free_space: %g\n", free_space);
+	DEBUG_MSG("free_space: %g\n", free_space);
 	for (LinkedList_Each(node, &ctx->line->elements)) {
 		w = node->data;
 		flex = &w->computed_style.flex;
@@ -351,7 +351,7 @@ static void FlexBoxLayout_ReflowRow(LCUI_FlexBoxLayoutContext ctx)
 	free_space = ctx->main_size - main_axis;
 
 	/* auto margin */
-	_DEBUG_MSG("free_space: %g, auto margin items: %lu\n", free_space,
+	DEBUG_MSG("free_space: %g, auto margin items: %lu\n", free_space,
 		   ctx->line->count_of_auto_margin_items);
 	if (free_space > 0 && ctx->line->count_of_auto_margin_items > 0) {
 		main_axis = 0;
@@ -361,14 +361,14 @@ static void FlexBoxLayout_ReflowRow(LCUI_FlexBoxLayoutContext ctx)
 			if (Widget_HasAutoStyle(w, key_margin_left)) {
 				w->margin.left = k;
 				Widget_UpdateBoxSize(w);
-				_DEBUG_MSG("margin-left: %g\n", k);
+				DEBUG_MSG("margin-left: %g\n", k);
 			}
 			if (Widget_HasAutoStyle(w, key_margin_right)) {
 				w->margin.right = k;
 				Widget_UpdateBoxSize(w);
-				_DEBUG_MSG("margin-right: %g\n", k);
+				DEBUG_MSG("margin-right: %g\n", k);
 			}
-			_DEBUG_MSG("basis: %g\n", w->box.outer.width);
+			DEBUG_MSG("basis: %g\n", w->box.outer.width);
 			main_axis += w->box.outer.width;
 		}
 		ctx->line->main_size = main_axis;
@@ -631,10 +631,10 @@ static void FlexBoxLayout_Reflow(LCUI_FlexBoxLayoutContext ctx)
 	for (LinkedList_Each(node, &ctx->lines)) {
 		ctx->line = node->data;
 		if (w->computed_style.flex.direction == SV_COLUMN) {
-			_DEBUG_MSG("column %lu\n", i++);
+			DEBUG_MSG("column %lu\n", i++);
 			FlexBoxLayout_ReflowColumn(ctx);
 		} else {
-			_DEBUG_MSG("row %lu\n", i++);
+			DEBUG_MSG("row %lu\n", i++);
 			FlexBoxLayout_ReflowRow(ctx);
 		}
 	}
