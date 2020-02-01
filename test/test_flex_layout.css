@@ -20,6 +20,8 @@ textview, body {
 
 .example__title {
   padding: 5px;
+  font-size: 12px;
+  line-height: 22px;
 }
 
 .example__content {
