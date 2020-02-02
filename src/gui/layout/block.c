@@ -151,9 +151,12 @@ static LCUI_BlockLayoutContext BlockLayout_Begin(LCUI_WidgetLayoutContext base)
 static void BlockLayout_Load(LCUI_BlockLayoutContext ctx)
 {
 	float max_row_width = -1;
+	float static_width, static_height;
 
 	LCUI_Widget child;
 	LCUI_Widget w = ctx->base->container;
+	LCUI_SizingRule width_sizing = Widget_GetWidthSizingRule(w);
+	LCUI_SizingRule height_sizing = Widget_GetHeightSizingRule(w);
 	LinkedListNode *node;
 
 	if (w->computed_style.display != SV_INLINE_BLOCK) {
@@ -166,6 +169,18 @@ static void BlockLayout_Load(LCUI_BlockLayoutContext ctx)
 			LinkedList_Append(&ctx->free_elements, child);
 			continue;
 		}
+		static_width = child->box.outer.width;
+		static_height = child->box.outer.height;
+		if (width_sizing == LCUI_SIZING_RULE_FIT_CONTENT &&
+		    !Widget_HasStaticWidth(child)) {
+			static_width -= child->box.content.width;
+			static_width += child->min_content_width;
+		}
+		if (height_sizing == LCUI_SIZING_RULE_FIT_CONTENT &&
+		    !Widget_HasStaticHeight(child)) {
+			static_height -= child->box.content.height;
+			static_height += child->min_content_height;
+		}
 		switch (child->computed_style.display) {
 		case SV_INLINE_BLOCK:
 			if (ctx->prev_display != SV_INLINE_BLOCK) {
@@ -173,8 +188,7 @@ static void BlockLayout_Load(LCUI_BlockLayoutContext ctx)
 			}
 			if (max_row_width != -1 &&
 			    ctx->row->elements.length > 0 &&
-			    ctx->row->width + child->box.outer.width >
-				max_row_width) {
+			    ctx->row->width + static_width > max_row_width) {
 				BlockLayout_NextRow(ctx);
 			}
 			break;
@@ -186,9 +200,9 @@ static void BlockLayout_Load(LCUI_BlockLayoutContext ctx)
 		default:
 			continue;
 		}
-		ctx->row->width += child->box.outer.width;
-		if (child->box.outer.height > ctx->row->height) {
-			ctx->row->height = child->box.outer.height;
+		ctx->row->width += static_width;
+		if (static_height > ctx->row->height) {
+			ctx->row->height = static_height;
 		}
 		LinkedList_Append(&ctx->row->elements, child);
 		ctx->prev_display = child->computed_style.display;
