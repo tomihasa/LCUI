@@ -307,8 +307,9 @@ int TextView_SetTextW(LCUI_Widget w, const wchar_t *text)
 		}
 		wcstrim(newtext, text, NULL);
 	} while (0);
-	TextLayer_SetTextW(txt->layer, txt->content, NULL);
+	TextLayer_SetTextW(txt->layer, newtext, NULL);
 	Widget_AddTask(w, LCUI_WTASK_REFLOW);
+	free(newtext);
 	return 0;
 }
 
