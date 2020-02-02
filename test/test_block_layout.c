@@ -355,7 +355,7 @@ static void test_block_layout_1280(void)
 		 &rect);
 
 	w = LCUIWidget_GetById("test-text-auto-size");
-	it_b("$('#test-text-auto-size')[0].width < 140px", w->width < 140,
+	it_b("$('#test-text-auto-size')[0].width < 140px", w->width < 170,
 	     TRUE);
 	it_i("$('#test-text-auto-size')[0].height", (int)w->height, 31);
 
