@@ -45,8 +45,16 @@ static void LCUIWidgetLayout_ApplyChanges(LCUI_WidgetLayoutContext ctx)
 	LCUI_WidgetEventRec e;
 	LCUI_Widget w = ctx->container;
 
-	if (ctx->box.border.width != w->box.border.width ||
-	    ctx->box.border.height != w->box.border.height) {
+	if (ctx->box.outer.x != w->box.outer.x ||
+	    ctx->box.outer.y != w->box.outer.y) {
+		ctx->invalid_box = SV_GRAPH_BOX;
+		Widget_PostSurfaceEvent(w, LCUI_WEVENT_MOVE,
+					!w->task.skip_surface_props_sync);
+		w->task.skip_surface_props_sync = TRUE;
+	}
+	if (ctx->box.outer.width != w->box.outer.width ||
+	    ctx->box.outer.height != w->box.outer.height) {
+		ctx->invalid_box = SV_GRAPH_BOX;
 		e.target = w;
 		e.data = NULL;
 		e.type = LCUI_WEVENT_RESIZE;
@@ -55,13 +63,9 @@ static void LCUIWidgetLayout_ApplyChanges(LCUI_WidgetLayoutContext ctx)
 		Widget_PostSurfaceEvent(w, LCUI_WEVENT_RESIZE,
 					!w->task.skip_surface_props_sync);
 		w->task.skip_surface_props_sync = TRUE;
-		Widget_AddTask(w, LCUI_WTASK_POSITION);
-		ctx->invalid_box = SV_GRAPH_BOX;
-	} else if (MEMCMP(&ctx->box.outer, &w->box.outer)) {
-		ctx->invalid_box = SV_GRAPH_BOX;
-		Widget_PostSurfaceEvent(w, LCUI_WEVENT_MOVE,
-					!w->task.skip_surface_props_sync);
-		w->task.skip_surface_props_sync = TRUE;
+		if (w->parent) {
+			Widget_AddTask(w->parent, LCUI_WTASK_REFLOW);
+		}
 	}
 	if (!ctx->should_add_invalid_area || ctx->invalid_box == 0) {
 		return;
