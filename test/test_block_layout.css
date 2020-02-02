@@ -2,6 +2,11 @@ body {
   margin: 0;
 }
 
+textview, body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
 .example {
   padding: 5px;
   background-color: #f1f2f3;
@@ -19,8 +24,8 @@ body {
 
 .example__title {
   padding: 5px;
-  font-size: 14px;
-  line-height: 1.6;
+  font-size: 12px;
+  line-height: 22px;
 }
 
 .example__content {
@@ -139,6 +144,10 @@ body {
   width: 200px;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .h-1 {
   height: 50px;
 }
@@ -235,4 +244,26 @@ body {
 #box-absolute-bottom-right {
   bottom: 0;
   right: 0;
+}
+
+#example-dropdown-menu .example__content {
+  position: relative;
+  height: 300px;
+}
+
+.dropdown-menu {
+  top: 5px;
+  left: 5px;
+  padding: 10px 0;
+  position: absolute;
+  max-width: 400px;
+  border: 1px solid #eee;
+}
+
+.dropdown-item {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px 10px;
+  width: 100%;
+  box-sizing: border-box;
 }

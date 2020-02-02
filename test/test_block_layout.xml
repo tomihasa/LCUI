@@ -4,7 +4,7 @@
     <w id="main">
       <w class="container">
         <w class="example">
-          <textview class="example__title">basic</textview>
+          <textview class="example__title">(0) Basic</textview>
           <w class="example__content">
             <w class="box w-auto"></w>
             <w class="box d-inline-block"></w>
@@ -35,22 +35,30 @@
             <w class="box d-inline-block"></w>
           </w>
         </w>
-      <w class="example">
-        <textview class="example__title">width</textview>
-        <w class="example__content">
-          <textview class="box w-min-50 d-inline-block">min-width: 50%; display: inline-block</textview>
-          <textview class="box w-50">width: 50%; display: block</textview>
-          <textview class="box w-100">width: 100%; display: block</textview>
-          <textview class="box w-50 d-inline-block">width: 50%; display: inline-block</textview>
-          <textview class="box w-50 d-inline-block">width: 50%; display: inline-block</textview>
-          <textview class="box w-25 d-inline-block">width: 25%; display: inline-block</textview>
-          <textview class="box w-25 d-inline-block">width: 25%; display: inline-block</textview>
-          <textview class="box w-25 d-inline-block">width: 25%; display: inline-block</textview>
-          <textview class="box w-25 d-inline-block">width: 25%; display: inline-block</textview>
-        </w>
-      </w>
         <w class="example">
-          <textview class="example__title">margin</textview>
+          <textview class="example__title">(1) Width</textview>
+          <w class="example__content">
+            <textview class="box w-min-50 d-inline-block">min-width: 50%; display: inline-block</textview>
+            <textview class="box w-50">width: 50%; display: block</textview>
+            <textview class="box w-100">width: 100%; display: block</textview>
+            <textview class="box w-50 d-inline-block">width: 50%; display: inline-block</textview>
+            <textview class="box w-50 d-inline-block">width: 50%; display: inline-block</textview>
+            <textview class="box w-25 d-inline-block">width: 25%; display: inline-block</textview>
+            <textview class="box w-25 d-inline-block">width: 25%; display: inline-block</textview>
+            <textview class="box w-25 d-inline-block">width: 25%; display: inline-block</textview>
+            <textview class="box w-25 d-inline-block">width: 25%; display: inline-block</textview>
+          </w>
+        </w>
+        <w class="example">
+          <textview class="example__title">(2) Auto size</textview>
+          <w class="example__content">
+            <textview id="test-text-auto-height" class="box h-auto w-4">block, limited width</textview>
+            <textview id="test-text-auto-size" class="box d-inline-block w-auto h-auto">inline block, auto size</textview>
+            <textview id="test-text-block-auto-height" class="box w-auto h-auto">block, auto size</textview>
+          </w>
+        </w>
+        <w class="example">
+          <textview class="example__title">(3) Margin</textview>
           <w class="example__content">
             <w class="box-padding">
               <textview class="box w-auto m-2">margin: 16px</textview>
@@ -72,35 +80,46 @@
             </w>
           </w>
         </w>
-      <w class="example">
-        <textview class="example__title">vertical-align</textview>
-        <w class="example__content">
-          <w class="box d-inline-block"></w>
-          <w class="box d-inline-block h-2"></w>
-          <textview class="box d-inline-block vertical-align-middle">middle</textview>
-          <w class="box d-inline-block h-3"></w>
-          <textview class="box d-inline-block vertical-align-bottom">bottom</textview>
-          <w class="box d-inline-block h-2"></w>
-          <textview class="box d-inline-block vertical-align-bottom">bottom</textview>
-          <textview class="box d-inline-block vertical-align-middle">middle</textview>
-          <w class="box"></w>
-          <w class="box d-inline-block"></w>
-          <textview class="box d-inline-block vertical-align-middle">middle</textview>
-          <textview class="box d-inline-block vertical-align-bottom">bottom</textview>
-          <w class="box d-inline-block h-2"></w>
-          <w class="box d-inline-block"></w>
-          <textview class="box d-inline-block vertical-align-middle">middle</textview>
-          <w class="box d-inline-block"></w>
-        </w>
-      </w>
-        <w class="example" id="example-position-absolute">
-          <textview class="example__title">position: absolute</textview>
+        <w class="example">
+          <textview class="example__title">(4) vertical-align</textview>
           <w class="example__content">
-              <w id="box-absolute-top-left" class="box"></w>
-              <w id="box-absolute-top-right" class="box"></w>
-              <w id="box-absolute-bottom-left" class="box"></w>
-              <w id="box-absolute-bottom-right" class="box"></w>
-              <w id="box-absolute-center" class="box"></w>
+            <w class="box d-inline-block"></w>
+            <w class="box d-inline-block h-2"></w>
+            <textview class="box d-inline-block vertical-align-middle">middle</textview>
+            <w class="box d-inline-block h-3"></w>
+            <textview class="box d-inline-block vertical-align-bottom">bottom</textview>
+            <w class="box d-inline-block h-2"></w>
+            <textview class="box d-inline-block vertical-align-bottom">bottom</textview>
+            <textview class="box d-inline-block vertical-align-middle">middle</textview>
+            <w class="box"></w>
+            <w class="box d-inline-block"></w>
+            <textview class="box d-inline-block vertical-align-middle">middle</textview>
+            <textview class="box d-inline-block vertical-align-bottom">bottom</textview>
+            <w class="box d-inline-block h-2"></w>
+            <w class="box d-inline-block"></w>
+            <textview class="box d-inline-block vertical-align-middle">middle</textview>
+            <w class="box d-inline-block"></w>
+          </w>
+        </w>
+        <w class="example" id="example-position-absolute">
+          <textview class="example__title">(5) position: absolute</textview>
+          <w class="example__content">
+            <w id="box-absolute-top-left" class="box"></w>
+            <w id="box-absolute-top-right" class="box"></w>
+            <w id="box-absolute-bottom-left" class="box"></w>
+            <w id="box-absolute-bottom-right" class="box"></w>
+            <w id="box-absolute-center" class="box"></w>
+          </w>
+        </w>
+        <w class="example" id="example-dropdown-menu">
+          <textview class="example__title">(6) Dropdown menu</textview>
+          <w class="example__content">
+            <w class="dropdown-menu" id="test-dropdown-menu">
+              <textview class="dropdown-item">Dropdown item text</textview>
+              <textview class="dropdown-item">Action</textview>
+              <textview class="dropdown-item">Another action</textview>
+              <textview class="dropdown-item">Something else here</textview>
+            </w>
           </w>
         </w>
       </w>

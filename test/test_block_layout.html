@@ -6,7 +6,7 @@
   <body>
     <div class="container">
       <div class="example">
-        <div class="example__title">basic</div>
+        <div class="example__title">(0) Basic</div>
         <div class="example__content">
           <div class="box w-auto"></div>
           <div class="box d-inline-block"></div>
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="example">
-        <div class="example__title">width</div>
+        <div class="example__title">(1) Width</div>
         <div class="example__content">
           <div class="box w-min-50 d-inline-block">min-width: 50%; display: inline-block</div>
           <div class="box w-50">width: 50%; display: block</div>
@@ -52,7 +52,15 @@
         </div>
       </div>
       <div class="example">
-        <div class="example__title">margin</div>
+        <div class="example__title">(2) Auto size</div>
+        <div class="example__content">
+          <div id="test-text-auto-height" class="box h-auto w-4">block, limited width</div>
+          <div id="test-text-auto-size" class="box d-inline-block w-auto h-auto">inline block, auto size</div>
+          <div id="test-text-block-auto-height" class="box w-auto h-auto">block, auto size</div>
+        </div>
+      </div>
+      <div class="example">
+        <div class="example__title">(3) Margin</div>
         <div class="example__content">
           <div class="box-padding">
             <div class="box w-auto m-2">margin: 16px</div>
@@ -75,7 +83,7 @@
         </div>
       </div>
       <div class="example">
-        <div class="example__title">vertical-align</div>
+        <div class="example__title">(4) vertical-align</div>
         <div class="example__content">
           <div class="box d-inline-block"></div>
           <div class="box d-inline-block h-2"></div>
@@ -96,13 +104,24 @@
         </div>
       </div>
       <div class="example" id="example-position-absolute">
-        <div class="example__title">position: absolute</div>
+        <div class="example__title">(5) position: absolute</div>
         <div class="example__content">
             <div id="box-absolute-top-left" class="box"></div>
             <div id="box-absolute-top-right" class="box"></div>
             <div id="box-absolute-bottom-left" class="box"></div>
             <div id="box-absolute-bottom-right" class="box"></div>
             <div id="box-absolute-center" class="box"></div>
+        </div>
+      </div>
+      <div class="example" id="example-dropdown-menu">
+        <div class="example__title">(5) Dropdown menu</div>
+        <div class="example__content">
+          <div class="dropdown-menu">
+            <div class="dropdown-item">Dropdown item text</div>
+            <div class="dropdown-item">Action</div>
+            <div class="dropdown-item">Another action</div>
+            <div class="dropdown-item">Something else here</div>
+          </div>
         </div>
       </div>
     </div>
