@@ -251,6 +251,7 @@ static void Widget_InitDiff(LCUI_Widget w, LCUI_WidgetTaskContext ctx)
 	ctx->diff.can_render = TRUE;
 	ctx->diff.invalid_box = self.refresh_all ? SV_GRAPH_BOX : 0;
 	ctx->diff.should_add_invalid_area = FALSE;
+	ctx->diff.box = w->box;
 	if (ctx->parent) {
 		if (!ctx->parent->diff.can_render) {
 			ctx->diff.can_render = FALSE;
@@ -292,7 +293,6 @@ static void Widget_BeginDiff(LCUI_Widget w, LCUI_WidgetTaskContext ctx)
 		ctx->diff.border = style->border;
 		ctx->diff.background = style->background;
 		ctx->diff.flex = style->flex;
-		ctx->diff.box = w->box;
 	}
 }
 
