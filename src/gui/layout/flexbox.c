@@ -624,7 +624,6 @@ static void FlexBoxLayout_ApplySize(LCUI_FlexBoxLayoutContext ctx)
 
 static void FlexBoxLayout_Reflow(LCUI_FlexBoxLayoutContext ctx)
 {
-	size_t i = 0;
 	LCUI_Widget w = ctx->widget;
 	LinkedListNode *node;
 
